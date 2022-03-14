@@ -1,8 +1,7 @@
-import { useRef } from "react";
-import ReactPlayer from "react-player";
-import React from "react";
-import "./App.scss";
+import React, { useRef } from "react";
 import { useImmer } from "use-immer";
+import ReactPlayer from "react-player";
+import "./App.scss";
 
 function App() {
   const [config, setConfig] = useImmer<any>({

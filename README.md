@@ -24,3 +24,4 @@ Self-development project of creating video player using
 
 - Move state management to redux
 - Add subtitles support
+

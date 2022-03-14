@@ -1,11 +1,13 @@
 import React, { useRef } from "react";
 import { useImmer } from "use-immer";
-import ReactPlayer from "react-player";
+import ReactPlayer, { ReactPlayerProps } from "react-player";
+import { Drafted } from "immer/dist/types/types-internal";
+
 import "./App.scss";
 
 function App() {
-  const [config, setConfig] = useImmer<any>({
-    url: null,
+  const [config, setConfig] = useImmer<ReactPlayerProps>({
+    url: undefined,
     pip: false,
     playing: true,
     controls: false,
@@ -55,7 +57,7 @@ function App() {
     field: string,
     value: string | boolean | number
   ): void => {
-    setConfig((draft: { [x: string]: string | number | boolean }) => {
+    setConfig((draft: Drafted) => {
       draft[field] = value;
     });
   };
@@ -81,7 +83,7 @@ function App() {
             id="controls"
             onClick={() => {
               changeConfig("playing", !config.playing);
-              load(config.url);
+              load(config.url as string);
             }}
           >
             {config.playing ? "Pause ⏸" : "Play ▶️"}
